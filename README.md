@@ -8,12 +8,12 @@ Mira Sohn
 
 I love to use [`DT::datatable`](https://rstudio.github.io/DT/) in my data analysis using rmarkdown (Rmd). It's especially practical when printing tables by providing a wide variety of functionality such as interactive column arrangement, search bar, entry adjustment, and more. It allows me to explore my RNA-seq data table by arranging differentially expressed genes by the size of log2FoldChange or false discovery rate. On the other hand, it was pretty much painful when implementing in a for loop. 
 
-In this demo, I'll be sharing a simple trick to implement `DT::datatable` in a for loop which I learned recently. My demo is super simple but you will find more useful applications [here](http://michaeljw.com/blog/post/subchunkify/). I also recomment to visit [this thread](https://stackoverflow.com/questions/39732560/why-does-datatable-not-print-when-looping-in-rmarkdown).
+In this demo, I'll be sharing a simple trick to implement `DT::datatable` in a for loop which I learned recently. My demo is super simple but you will find more useful applications [here](http://michaeljw.com/blog/post/subchunkify/). I also recommend to visit [this thread](https://stackoverflow.com/questions/39732560/why-does-datatable-not-print-when-looping-in-rmarkdown).
 
 
 ## Requirement
 
-My demo requires the R package `DT`. More info bout the package is found here:
+My demo requires the R package `DT`. More info about the package is found here:
 
 - GitHub: https://github.com/rstudio/DT
 - Documentation: https://rstudio.github.io/DT/
@@ -46,7 +46,7 @@ library(DT)
 
 ### Input list
 
-A list of toy data frames will be used in this demp. Ensure that each data frame is named. The names `dataset1` and `dataset2` will be used both in printing the tables and naming subchunks.
+A list of toy data frames will be used in this demo. Ensure that each data frame is named. The names `dataset1` and `dataset2` will be used both in printing the tables and naming subchunks.
 
 
 ```r
@@ -84,7 +84,7 @@ lapply(res.list, head)
 
 ### Setting up a function creating subchunks
 
-The key idea of this demo is using subchunks. I will set up a simpler version of `subchunkify` introduced [here](http://michaeljw.com/blog/post/subchunkify/). You can also take advantage of it in many other applications such as rendering multiple plot formats in a single chunk.
+The key idea of this demo is using subchunks. I setting up a simpler version of `subchunkify` introduced [here](http://michaeljw.com/blog/post/subchunkify/). You can also take advantage of it in many different applications such as rendering multiple plot formats in a single chunk.
 
 
 ```r
@@ -162,4 +162,4 @@ Following is what they look like after rendering.
 ![dataset2](https://github.com/Mira0507/dtdatatable_loop/blob/master/images/table2.png)
 
 
-My code in the Rmd file is available [here](https://github.com/Mira0507/dtdatatable_loop/blob/master/demo.Rmd).
+My code in the Rmd file is found [here](https://github.com/Mira0507/dtdatatable_loop/blob/master/demo.Rmd).
