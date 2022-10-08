@@ -1,6 +1,6 @@
 # DT::datatable in a for loop
 
-2022/10/07
+2022/10/08
 
 Mira Sohn
 
@@ -84,7 +84,7 @@ lapply(res.list, head)
 
 ### Setting up a function creating subchunks
 
-The key idea of this demo is using subchunks. I will set up a simpler version of `chunkify` introduced [here](http://michaeljw.com/blog/post/subchunkify/). You can also take advantage of it in many other applications such as rendering multiple plot formats in a single chunk.
+The key idea of this demo is using subchunks. I will set up a simpler version of `subchunkify` introduced [here](http://michaeljw.com/blog/post/subchunkify/). You can also take advantage of it in many other applications such as rendering multiple plot formats in a single chunk.
 
 
 ```r
@@ -106,7 +106,20 @@ subchunkify <- function(name) {
 
 ```
 
-While looping, the `dataset1` and `dataset2` will be used as the argument `name`. Given that, `cat(knitr::knit(text = sub_chunk, quiet=TRUE))` will turn two chunks below:
+While looping, the argument `name` will be set to the `dataset1` and `dataset2`. Calling `cat(knitr::knit(text = sub_chunk, quiet=TRUE))` will compile the subchunks.
+
+
+### Printing tables
+
+```r
+# Create tables in each tab
+cat('## Table {.tabset}\n\n')
+for (name in names(res.list)) {
+    cat('###', name, '\n\n')
+    subchunkify(name)
+    cat('\n\n')
+}
+```
 
 ```r
 
