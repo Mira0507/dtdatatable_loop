@@ -1,4 +1,4 @@
-# DT::datatable in a for loop
+# `DT::datatable` in a for loop
 
 2022/10/08
 
@@ -111,6 +111,8 @@ While looping, the argument `name` will be set to the `dataset1` and `dataset2`.
 
 ### Printing tables
 
+Once the function `subchunkify` is defined, just calling the function `subchunkify()` in a for loop will take care of everything.
+
 ```r
 # Create tables in each tab
 cat('## Table {.tabset}\n\n')
@@ -121,8 +123,17 @@ for (name in names(res.list)) {
 }
 ```
 
+Running above six lines generate two subchunks as shown below.
+
+
 ```r
 
+# ## Table {.tabset}
+#
+#
+# ### dataset1
+#
+# 
 # ```{r sub_chunk_dataset1, results='asis', echo=FALSE}
 #
 # DT::datatable(res.list[[dataset1]] %>% dplyr::arrange(logFC))
@@ -131,6 +142,9 @@ for (name in names(res.list)) {
 # ```
 # 
 #
+# 
+# ## dataset2
+# 
 #
 # ```{r sub_chunk_dataset2, results='asis', echo=FALSE}
 #
@@ -140,4 +154,9 @@ for (name in names(res.list)) {
 # ```
 
 ```
+
+
+After rendering, ![dataset1](https://github.com/Mira0507/dtdatatable_loop/blob/master/images/table1.png) and ![dataset2](https://github.com/Mira0507/dtdatatable_loop/blob/master/images/table2.png)
+
+
 
