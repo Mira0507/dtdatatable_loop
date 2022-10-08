@@ -46,19 +46,23 @@ library(DT)
 
 ### Input list
 
-I prepared a list which consists of two data frames for this demo.
+A list of data frames will be used in this demp. Ensure that each data frame is named. The names `dataset1` and `dataset2` will be used both in printing the tables and naming subchunks.
 
 
 ```r
+# Import input list
 res.list <- readRDS("reslist.rds")
+
+# Name each data frame
+# (this step can be skipped if they are already properly named)
 names(res.list) <- c("dataset1", "dataset2")
 
+# Explore the input list
+lapply(res.list, head)
 ```
 
 
-
 ```r
-# > lapply(res.list, head)
 # $dataset1
           # logFC   logCPM         F    PValue       FDR
 # 3713  0.8356375 8.568426 0.6551161 0.4183335 0.9985701
@@ -75,6 +79,52 @@ names(res.list) <- c("dataset1", "dataset2")
 # 3493 -0.03265589 8.471250 0.001013631 0.97525400 0.9996974
 # 1164  0.53423700 8.471309 0.309831002 0.59023387 0.9636926
 # 2862 -0.01096336 8.627729 0.000151129 0.99044330 0.9996974
+
+```
+
+### Setting up a function creating subchunks
+
+The key idea of this demo is using subchunks. I will set up a simpler version of `chunkify` introduced [here](http://michaeljw.com/blog/post/subchunkify/). You can also take advantage of it in many other applications such as rendering multiple plot formats in a single chunk.
+
+
+```r
+
+# Define a function generating subchunks with DT::datatable(dataframe) each
+subchunkify <- function(name) {
+    t_deparsed <- paste0("DT::datatable(res.list[[",
+                         deparse(substitute(name)),
+                         "]] %>% dplyr::arrange(logFC))")
+
+    sub_chunk <- paste0("```{r sub_chunk_", name, ", results='asis', echo=FALSE}",
+        "\n",
+        t_deparsed,
+        "\n\n```\n\n\n")
+
+    cat(knitr::knit(text = sub_chunk, quiet=TRUE))
+}
+
+
+```
+
+While looping, the `dataset1` and `dataset2` will be used as the argument `name`. Given that, `cat(knitr::knit(text = sub_chunk, quiet=TRUE))` will turn two chunks below:
+
+```r
+
+# ```{r sub_chunk_dataset1, results='asis', echo=FALSE}
+#
+# DT::datatable(res.list[[dataset1]] %>% dplyr::arrange(logFC))
+# 
+#
+# ```
+# 
+#
+#
+# ```{r sub_chunk_dataset2, results='asis', echo=FALSE}
+#
+# DT::datatable(res.list[[dataset2]] %>% dplyr::arrange(logFC))
+# 
+#
+# ```
 
 ```
 
