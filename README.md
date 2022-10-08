@@ -123,7 +123,7 @@ for (name in names(res.list)) {
 }
 ```
 
-Running above six lines generate two subchunks as shown below.
+Running above six lines generates two subchunks as shown below.
 
 
 ```r
@@ -156,7 +156,10 @@ Running above six lines generate two subchunks as shown below.
 ```
 
 
-After rendering, ![dataset1](https://github.com/Mira0507/dtdatatable_loop/blob/master/images/table1.png) and ![dataset2](https://github.com/Mira0507/dtdatatable_loop/blob/master/images/table2.png)
+Following is what they look like after rendering.
+
+![dataset1](https://github.com/Mira0507/dtdatatable_loop/blob/master/images/table1.png)
+![dataset2](https://github.com/Mira0507/dtdatatable_loop/blob/master/images/table2.png)
 
 
 
