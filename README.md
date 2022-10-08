@@ -84,7 +84,7 @@ lapply(res.list, head)
 
 ### Setting up a function creating subchunks
 
-The key idea of this demo is using subchunks. I setting up a simpler version of `subchunkify` introduced [here](http://michaeljw.com/blog/post/subchunkify/). You can also take advantage of it in many different applications such as rendering multiple plot formats in a single chunk.
+The key idea of this demo is using subchunks. I'm setting up a simpler version of `subchunkify` introduced [here](http://michaeljw.com/blog/post/subchunkify/). You can also take advantage of it in many different applications such as rendering multiple plot formats in a single chunk.
 
 
 ```r
