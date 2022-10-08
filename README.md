@@ -46,7 +46,7 @@ library(DT)
 
 ### Input list
 
-A list of data frames will be used in this demp. Ensure that each data frame is named. The names `dataset1` and `dataset2` will be used both in printing the tables and naming subchunks.
+A list of toy data frames will be used in this demp. Ensure that each data frame is named. The names `dataset1` and `dataset2` will be used both in printing the tables and naming subchunks.
 
 
 ```r
@@ -162,4 +162,4 @@ Following is what they look like after rendering.
 ![dataset2](https://github.com/Mira0507/dtdatatable_loop/blob/master/images/table2.png)
 
 
-
+My code in the Rmd file is available [here](https://github.com/Mira0507/dtdatatable_loop/blob/master/demo.Rmd).
